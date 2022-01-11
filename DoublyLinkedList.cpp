@@ -125,3 +125,7 @@ void DoublyLinkedList::displayList()
 
 	cout << endl;
 }
+
+DoublyLinkedList::~DoublyLinkedList(){
+	deleteAllNodes();
+}

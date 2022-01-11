@@ -24,6 +24,8 @@ class DoublyLinkedList
 		void deleteAllNodes();
 		void searchNode(int data);
 		void displayList();
+
+		~DoublyLinkedList();
 };
 
 #endif 

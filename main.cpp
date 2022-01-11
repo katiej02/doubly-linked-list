@@ -18,8 +18,6 @@ int main()
 	List.searchNode(70); //prints memory location address of node with value = 70; value not in the list
 	List.searchNode(10); 
 
-	List.deleteAllNodes(); 
-
 	List.displayList(); //none
 
 	return 0;
