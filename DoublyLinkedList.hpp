@@ -13,6 +13,7 @@ class DoublyLinkedList
 		};
 
 		Node *head;
+		Node *tail;
 
 	public:
 		//initialize empty linked list

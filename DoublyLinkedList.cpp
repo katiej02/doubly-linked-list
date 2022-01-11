@@ -14,22 +14,17 @@ void DoublyLinkedList::addNodeAtEnd(int data)
 	newNode->data = data;	  
 	newNode->next = NULL;	  
 
-	Node *temp = head;
-
-	//no existing list
+	//linked list not existing yet - first ever node
 	if (head == NULL)
 	{
 		newNode->prev = NULL;
 		head = newNode;
-		return;
+	} else { //append new node to last existing node (tail)
+		tail->next = newNode;
+		newNode->prev = tail;
 	}
 
-	while (temp->next != NULL)
-		temp = temp->next;
-
-	temp->next = newNode;
-
-	newNode->prev = temp;
+	tail = newNode;
 }
 
 void DoublyLinkedList::deleteNode(int data)
