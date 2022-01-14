@@ -10,16 +10,18 @@ DoublyLinkedList::DoublyLinkedList()
 
 void DoublyLinkedList::addNodeAtEnd(int data)
 {
-	Node *newNode = new Node; 
-	newNode->data = data;	  
-	newNode->next = NULL;	  
+	Node *newNode = new Node;
+	newNode->data = data;
+	newNode->next = NULL;
 
 	//linked list not existing yet - first ever node
 	if (head == NULL)
 	{
 		newNode->prev = NULL;
 		head = newNode;
-	} else { //append new node to last existing node (tail)
+	}
+	else
+	{ //append new node to last existing node (tail)
 		tail->next = newNode;
 		newNode->prev = tail;
 	}
@@ -62,51 +64,35 @@ void DoublyLinkedList::deleteAllNodes()
 	{
 		Node *temp = head;
 		head = head->next;
-		delete(temp);
+		delete (temp);
 	}
 
 	cout << "All nodes are deleted successfully.\n";
 }
 
-void DoublyLinkedList::searchNode(int data)
+Node *DoublyLinkedList::searchNode(int data)
 {
 	Node *currNode = head;
 
 	if (currNode == NULL)
+	{
 		cout << "Empty list" << endl;
+	}
 	else
 	{
-		while (currNode != NULL)
+		Node *prevNode = NULL;
+
+		while (currNode != NULL && currNode->data != data)
 		{
-			if (currNode->data == data)
-			{
-				cout << "Found data at location: " << currNode << endl;
-			}
-			else
-			{
-				Node *prevNode = NULL;
-
-				while (currNode != NULL && currNode->data != data)
-				{
-					prevNode = currNode;
-					currNode = currNode->next;
-				}
-
-				//check if node containing data is in the list
-				if (currNode != NULL)
-				{
-					prevNode->next = currNode->next;
-					cout << "Found data at location: " << currNode << endl;
-				}
-				else
-				{
-					cout << "Data not found in the list!" << endl;
-				}
-			}
-
-			break;
+			prevNode = currNode;
+			currNode = currNode->next;
 		}
+
+		if (currNode == NULL)
+			cout << "Data not found in the list!" << endl;
 	}
+
+	return currNode;
 }
 
 void DoublyLinkedList::displayList()
@@ -121,6 +107,7 @@ void DoublyLinkedList::displayList()
 	cout << endl;
 }
 
-DoublyLinkedList::~DoublyLinkedList(){
+DoublyLinkedList::~DoublyLinkedList()
+{
 	deleteAllNodes();
 }
